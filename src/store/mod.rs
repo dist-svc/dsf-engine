@@ -14,9 +14,18 @@ use dsf_core::wire::Container;
 use dsf_core::crypto::{Crypto, PubKey as _};
 
 
+#[cfg(feature = "std")]
+mod mem_store;
+#[cfg(feature = "std")]
+pub use mem_store::MemoryStore;
 
+#[cfg(feature = "sled")]
+mod sled_store;
+#[cfg(feature = "sled")]
+pub use sled_store::SledStore;
 
 bitflags::bitflags! {
+    /// Features supported by a store interface
     pub struct StoreFlags: u16 {
         const KEYS  = 0b0000_0001;
         const SIGS  = 0b0000_0010;
