@@ -20,4 +20,10 @@ pub enum EngineError<CommsError: Debug, StoreError: Debug> {
 
     #[cfg_attr(feature="thiserror", error("unsupported"))]
     Unsupported,
+
+    #[cfg_attr(feature="thiserror", error("No secret key for service"))]
+    NoSecretKey,
+
+    #[cfg_attr(feature="thiserror", error("Overrun in static vector"))]
+    Overrun,
 }

@@ -10,7 +10,7 @@ license = "MPL-2.0"
 edition = "2018"
 
 [features]
-std = []
+std = [ "thiserror", "dsf-core/std" ]
 alloc = [ "dsf-core/alloc" ]
 default = [ "std", "alloc", "sled" ]
 
@@ -27,6 +27,9 @@ serde = { version = "1.0.104", optional = true }
 structopt = { version = "0.3.8", optional = true }
 futures = { version = "0.3.1", optional = true }
 sled = { version = "0.34.7", optional = true }
+thiserror = { version = "*", optional = true }
 
 [dev-dependencies]
 simplelog = "*"
+anyhow = "*"
+tempfile = "*"

@@ -785,6 +785,7 @@ mod test {
         let (p, mut e) = setup();
         let from = 1;
 
+        // Pre-fill peer subscribed state
         e.store.update_peer(&p.id(), |p| p.subscriber = true ).unwrap();
 
         // Build subscribe request and execute
@@ -841,6 +842,7 @@ mod test {
         // Parse out page
         let b = Container::parse(d.1, &e.svc.keys()).expect("Failed to parse object");
 
+        // Check data push contains published data
         assert_eq!(b.body_raw(), &data_body);
 
     }

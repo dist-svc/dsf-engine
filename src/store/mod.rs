@@ -79,7 +79,7 @@ pub trait Store: KeySource {
     fn fetch_page<T: MutableData>(&mut self, sig: &Signature, buff: T) -> Result<Option<Container<T>>, Self::Error>;
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub struct ObjectInfo {
     pub page_index: u16,
@@ -87,7 +87,7 @@ pub struct ObjectInfo {
     pub sig: Signature,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub struct Peer<Addr: Clone + Debug> {
     pub keys: Keys,                     // Key storage for the peer / service
